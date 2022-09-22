@@ -1,0 +1,97 @@
+{% extends 'main/base.html' %}
+{% load static %}
+
+<!-- ================================
+Start SEO blocks
+================================= -->
+{% block title %}{% endblock %}
+{% block decription %}{% endblock %}
+{% block keywords %}{% endblock %}
+<!-- ================================
+END SEO blocks
+================================= -->
+
+<!-- ================================
+Start CSS blocks
+================================= -->
+{% block extend_header %}{% endblock %}
+<!-- ================================
+END CSS blocks
+================================= -->
+
+<!-- ================================
+Start script blocks
+================================= -->
+{% block extend_footer %}{% endblock %}
+<!-- ================================
+END script blocks
+================================= -->
+
+<!-- ================================
+Start Content
+================================= -->
+{% block content %}
+<style>
+  body {
+      font-family: "Roboto", sans-serif;
+      font-size: 18px;
+      background-color: #fdfdfd;
+  }
+
+  .head_text {
+      color: white;
+  }
+
+  .card {
+      box-shadow: 0 16px 48px #E3E7EB;
+  }
+</style>
+<header class="masthead">
+  <div class="overlay"></div>
+  <div class="container">
+      <div class="row">
+          <div class=" col-md-8 col-md-10 mx-auto">
+              <div class="site-heading">
+                  <h3 class=" site-heading my-4 mt-3 text-white"> Bienvenido a Nuestro Blog de nuestros Mangas </h3>
+                  <p class="text-light">¡Nos encanta Publicar series, así como a ti leerlas! &nbsp
+                  </p>
+              </div>
+          </div>
+      </div>
+  </div>
+</header>
+<section>
+  <div class="sectionSpaceSm lightBg">
+    <div class="container">
+      <div class="row pb-3">
+        <div class="col">
+          <h4 class="smText regular">Recent posts</h4>
+        </div>
+        <div class="col-auto">
+          <a href="{% url 'main:blogs' %}" class="simpleLink">View all</a>
+        </div>
+      </div>
+      <div class="row g-3">
+      {% for b in blogs %}
+      {% if b.is_active %}
+        <div class="col-lg-6">
+          <div class="cardStyle1">
+            <h4 class="mdTitle cs1Title"><a href="{% url 'main:blog' slug=b.slug %}">{{b.name}}</a></h4>
+            <ul class="cardOptionCol">
+              <li>{{b.timestamp.date}}</li>
+              <li>{{b.author}}</li>
+            </ul>
+            <p>{{b.description}}</p>
+          </div>
+        </div>
+        {% endif %}
+        {% endfor %}
+
+      </div>
+    </div>
+  </div>
+</section>
+{% endblock %}
+<!-- ================================
+End Content
+================================= -->
