@@ -8,4 +8,5 @@ urlpatterns = [
     path('', views.IndexView.as_view(), name= "home"),
     path('blog/', views.BlogView.as_view(), name="blogs"),
     path('blog/<slug:slug>', views.BlogDetailView.as_view(), name="blogs"),
+    path('blogaddinfo', views.BlogAddInfo.as_view(),name="blogaddinfo")
 ]    

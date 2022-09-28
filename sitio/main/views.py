@@ -1,6 +1,9 @@
+from email import message
 from django.shortcuts import render
 from django.views import generic
 from django.views import View
+
+from main.forms import BlogForm
 from .models import (
     Blog)
 
@@ -21,6 +24,16 @@ class IndexView(generic.TemplateView):
 		context["blogs"] = blogs
 		#context["portfolio"] = portfolio
 		return context
+class BlogAddInfo(generic.FormView):
+	template_name= "main/blogaddinfo.html"
+	form_class = BlogForm
+	success_url = "/"
+
+	def form_valid(self, form): 
+		form.save()
+		message.success(self.request,'Gracias por aportar en la página')
+		return super().form_valid(form)
+
 
 class BlogView(generic.ListView):
 	model = Blog
