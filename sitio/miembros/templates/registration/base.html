@@ -9,8 +9,9 @@
     <meta name="author" content="Shueshia Project Anime">
     <link rel="canonical" href="{{request.path}}"/>
     <link rel="home" href="{% url 'main:home' %}"/>
-    <meta name="description" content="{% block description %}page that publish anime mangas{% endblock %}">
+    <meta name="description" content="{% block description %}{% endblock %}">
     <meta name="keywords" content="{% block keywords %}{% endblock %}">
+
     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/icon.jpg' %}">
     <link rel="apple-touch-icon" type="image/jpg" href="{% static 'images/icon.jpg' %}">
 
@@ -27,13 +28,13 @@
 
   </head>
   <body>
-    {% include 'main/partials/messages.html' %}
-    {% include 'main/partials/nav.html' %}
+    {% include 'registration/partials/messages.html' %}
+    {% include 'registration/partials/nav.html' %}
 
     {% block content %}
     {% endblock %}
 
-    {% include 'main/partials/footer.html' %}
+    {% include 'registration/partials/footer.html' %}
 
     <!-- ================================
     Start Scripts

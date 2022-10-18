@@ -1,22 +1,6 @@
 from django.db import models
 from ckeditor.fields import RichTextField
-
-"""
-class ContactProfile(models.Model):
-    
-    class Meta:
-        verbose_name_plural = 'Contact Profiles'
-        verbose_name = 'Contact Profile'
-        ordering = ["timestamp"]
-    timestamp = models.DateTimeField(auto_now_add=True)
-    name = models.CharField(verbose_name="Name",max_length=100)
-    email = models.EmailField(verbose_name="Email")
-    message = models.TextField(verbose_name="Message")
-
-    def __str__(self):
-        return f'{self.name}'
-"""
-
+from django.template.defaultfilters import slugify
 
 class Blog(models.Model):
 
@@ -36,7 +20,7 @@ class Blog(models.Model):
 
     def save(self, *args, **kwargs):
         if not self.id:
-            self.slug = slugify(self.name)
+            self.slug = slugify(self.name) 
         super(Blog, self).save(*args, **kwargs)
 
     def __str__(self):
@@ -45,4 +29,5 @@ class Blog(models.Model):
     def get_absolute_url(self):
         return f"/blog/{self.slug}"
 
+       
 # Create your models here.

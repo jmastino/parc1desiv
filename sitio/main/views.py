@@ -1,11 +1,13 @@
 from email import message
-from django.shortcuts import render
+from msilib.schema import ListView
+from re import template
+#from django.shortcuts import render
 from django.views import generic
-from django.views import View
-
+#from django.views import View
 from main.forms import BlogForm
 from .models import (
     Blog)
+
 
 class IndexView(generic.TemplateView):
 	template_name = "main/index.html"
@@ -27,13 +29,13 @@ class IndexView(generic.TemplateView):
 class BlogAddInfo(generic.FormView):
 	template_name= "main/blogaddinfo.html"
 	form_class = BlogForm
-	success_url = "/"
-
+	success_url = "main/blog.html"
+"""
 	def form_valid(self, form): 
 		form.save()
 		message.success(self.request,'Gracias por aportar en la página')
 		return super().form_valid(form)
-
+"""
 
 class BlogView(generic.ListView):
 	model = Blog

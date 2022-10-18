@@ -1,6 +1,11 @@
 from django import forms
 from .models import Blog
 
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.models import User
+
+      
+
 class BlogForm(forms.ModelForm):
     author = forms.CharField(max_length=200, required=True,widget=forms.TextInput(attrs={
         'placeholder': '*author name..',
